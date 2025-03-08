@@ -26,16 +26,16 @@ Bureaucrat      &Bureaucrat::operator=(const Bureaucrat &rhs)
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cout << "Bureaucrat(" << getName() <<") Destructed" << std::endl;
+    std::cout << "Bureaucrat(" << getName() <<") Has Destructed" << std::endl;
 }
 
 void    Bureaucrat::setGrade(unsigned int grade)
 {
 
     if (grade < 1)
-        throw GradeTooLowException();
-    else if (grade > 150)
         throw GradeTooHighException();
+    else if (grade > 150)
+        throw GradeTooLowException();
 
     this->_grade = grade;
 }
@@ -60,14 +60,19 @@ void    Bureaucrat::decrementGrade(void)
     setGrade(this->_grade + 1);
 }
 
-const char * Bureaucrat::GradeTooHighException::what(void) const throw()
+const char* Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return "Error: Grade Too High";
+	return "Bureaucrat: Grade Too High";
 }
 
-const char * Bureaucrat::GradeTooLowException::what(void) const throw()
+const char* Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	return "Error: Grade Too Low";
+	return "Bureaucrat: Grade Too Low";
+}
+
+void		Bureaucrat::signForm(Form &f)
+{
+    f.beSigned(*this);
 }
 
 std::ostream	&operator<<(std::ostream& os, const Bureaucrat& bu)

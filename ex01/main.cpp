@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 void    printLine(void)
 {
@@ -12,14 +13,15 @@ int main(void)
 {
     try 
     {
-        Bureaucrat b1("Jean", 30);
-        Bureaucrat b2("Pierre", 50);
+        Bureaucrat  b1("Jean", 30);
+        Bureaucrat  b2("Pierre", 50);
 
-        std::cout << b1;
-        std::cout << b2;
+        Form        f1("Paper", 40);
 
-        Bureaucrat b3("Kylian", 151);
-        std::cout << b3;
+        std::cout << f1;
+        b1.signForm(f1);
+        b2.signForm(f1);
+
     }
     catch (const std::exception& e)
     {
@@ -30,12 +32,16 @@ int main(void)
 
     try
     {
-        Bureaucrat b1("Giroud", 2);
-        std::cout << b1;
-        b1.incrementGrade();
-        std::cout << b1;
-        b1.incrementGrade();
-        std::cout << b1;
+        Form f1("Paper", 160);
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    try
+    {
+        Form f1("Paper", 0);
     }
     catch (const std::exception& e)
     {
@@ -44,18 +50,22 @@ int main(void)
 
     printLine();
 
+
     try
     {
-        Bureaucrat b1("Gerome", 149);
+        Form f1("Papier", 50);
+        Bureaucrat b1("Jean", 51);
+
+        b1.incrementGrade();
+        b1.incrementGrade();
         std::cout << b1;
-        b1.decrementGrade();
-        std::cout << b1;
-        b1.decrementGrade();
-        std::cout << b1;
+        b1.signForm(f1);
+        b1.signForm(f1);
     }
     catch (const std::exception& e)
     {
         std::cerr << e.what() << std::endl;
     }
+
     return (0);
 }
