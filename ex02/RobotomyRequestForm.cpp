@@ -5,15 +5,13 @@
 #include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm()
-    : AForm("RobotomyRequestForm", 72),
-      _gradeExec(45)
+    : AForm("RobotomyRequestForm", 72, 45)
 {
     this->_signed = false;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &rhs)
-    : AForm("RobotomyRequestForm", 72),
-      _gradeExec(45)
+    : AForm("RobotomyRequestForm", 72, 45)
 {
     *this = rhs;   
 }
@@ -44,18 +42,13 @@ void    RobotomyRequestForm::execute(Bureaucrat const& executor) const
 		return ;
 	}
 
-    srand(static_cast<unsigned int>(time(NULL)));
+    srand(static_cast<unsigned int>(clock()));
 
     std::cout << "Drrrrrr..." << std::endl;
     if (rand() % 2)
         std::cout << executor.getName() << "has been robotomized successfully." << std::endl;
     else
         throw FailedRobotomized();
-}
-
-const char*  RobotomyRequestForm::NotSignedForm::what(void) const throw()
-{
-	return "RobotomyRequestForm: Not Signed Form";
 }
 
 const char*  RobotomyRequestForm::FailedRobotomized::what(void) const throw()

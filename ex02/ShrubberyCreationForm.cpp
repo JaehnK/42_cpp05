@@ -3,15 +3,13 @@
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-	 : AForm("ShrubberyCreationForm", 145),
-	  _gradeExec(137)
+	 : AForm("ShrubberyCreationForm", 145, 137)
 {
 	this->_signed = false;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &rhs)
-	: AForm("ShrubberyCreationForm", 145),
-	  _gradeExec(137)
+	: AForm("ShrubberyCreationForm", 145, 137)
 {
 	*this = rhs;
 }
@@ -91,7 +89,3 @@ void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 	return ;
 }
 
-const char*  ShrubberyCreationForm::NotSignedForm::what(void) const throw()
-{
-	return "ShrubberyCreationForm: Not Signed Form";
-}

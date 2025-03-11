@@ -14,17 +14,20 @@ class AForm
     protected:
         const std::string   _name;
         const unsigned int  _grade;
+        const unsigned int  _gradeExec;
         bool                _signed;
+        
+        AForm(std::string name, unsigned int grade, unsigned int gradeExec);
+        AForm(const AForm &rhs);
     
     public:
-        AForm(std::string name, unsigned int grade);
-        AForm(const AForm &rhs);
         AForm    &operator=(const AForm &rhs);
         virtual ~AForm();
         
         // getter
         std::string     getName(void) const;
         unsigned int    getGrade(void) const;
+        unsigned int    getGradeExec(void) const;
         bool            getSigned(void) const;
 
         // funcs
@@ -43,6 +46,11 @@ class AForm
                 const char* what() const throw();
         };
         class           GradeTooLowException: public std::exception
+        {
+            public:
+                const char* what() const throw();
+        };
+        class           NotSignedForm: public std::exception
         {
             public:
                 const char* what() const throw();

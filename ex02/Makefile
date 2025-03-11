@@ -1,17 +1,18 @@
 C++ = c++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRCS =	main.cpp \
-		Bureaucrat.cpp \
+SRCS =	Bureaucrat.cpp \
 		AForm.cpp \
 		ShrubberyCreationForm.cpp \
 		RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp \
+		main.cpp \
 
 HEADR =	Bureaucrat.hpp \
 		AForm.hpp \
 		ShrubberyCreationForm.hpp \
 		RobotomyRequestForm.hpp \
-
+		PresidentialPardonForm.hpp \
 
 
 

@@ -5,7 +5,6 @@
 class ShrubberyCreationForm: public AForm
 {
     private:
-        const unsigned int _gradeExec;
 
     public:
         ShrubberyCreationForm();
@@ -14,12 +13,6 @@ class ShrubberyCreationForm: public AForm
         ~ShrubberyCreationForm();
 
         virtual void    execute(Bureaucrat const& executor) const;
-
-        class           NotSignedForm: public std::exception
-        {
-            public:
-                const char* what() const throw();
-        };
 };
 
 #endif
